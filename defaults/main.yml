@@ -1,0 +1,9 @@
+---
+# defaults file for hemanth22.ci
+# Below will define the continous integration path.
+ci_path: test
+# Below will define the continous integration repo
+ci_repo: https://github.com/hemanth22/GroovyLearning.git
+# Git branch
+ci_branch: superpom
+

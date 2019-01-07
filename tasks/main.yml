@@ -1,0 +1,62 @@
+---
+# tasks file for hemanth22.ci
+- name: Ensuring maven and git is installed
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - git
+      - maven
+  when: ansible_distribution == 'CentOS' or
+        ansible_distribution == 'Red Hat Enterprise Linux' or
+        ansible_distribution == 'RedHat'
+  tags:
+    - install
+    - ci
+
+- name: Creating a test directory
+  file:
+    path: "{{ ci_path }}"
+    state: directory
+    mode: 0777
+  tags:
+    - create-file
+    - ci
+
+- name: Cloning a repository
+  git:
+    repo: "{{ ci_repo }}"
+    dest: "{{ ci_path }}"
+    clone: yes
+    version: "{{ ci_branch }}"
+  tags:
+    - clone
+    - ci
+
+- name: Compile program with maven
+  command: chdir= "{{ ci_path }}" {{ item }}
+  with_items:
+  - mvn compile
+  tags:
+    - ci
+
+- name: Testing program with maven
+  command: chdir= "{{ ci_path }}" {{ item }}
+  with_items:
+  - mvn test
+  tags:
+    - ci
+
+- name: Packing program with maven
+  command: chdir= "{{ ci_path }}" {{ item }}
+  with_items:
+  - mvn package
+  tags:
+    - ci
+
+- name: Destroying test directory
+  file:
+    path: "{{ ci_path }}"
+    state: absent
+  tags:
+    - destroy

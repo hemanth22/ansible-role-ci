@@ -1,0 +1,19 @@
+galaxy_info:
+  author: Hemanth BITRA
+  description: Maven based ansible ci
+  issue_tracker_url: https://github.com/hemanth22/ansible-role-ci/issues
+  license: GPLv3
+  min_ansible_version: 2.4
+  platforms:  
+    - name: EL
+      versions:
+        - 7
+        - 6
+  galaxy_tags:
+    - development
+    - centos
+    - devops
+    - ci
+    - maven
+
+dependencies: []
