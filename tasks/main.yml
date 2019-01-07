@@ -34,21 +34,21 @@
     - ci
 
 - name: Compile program with maven
-  command: chdir= "{{ ci_path }}" {{ item }}
+  command: chdir: "{{ ci_path }}" {{ item }}
   with_items:
     - mvn compile
   tags:
     - ci
 
 - name: Testing program with maven
-  command: chdir= "{{ ci_path }}" {{ item }}
+  command: chdir: "{{ ci_path }}" {{ item }}
   with_items:
     - mvn test
   tags:
     - ci
 
 - name: Packing program with maven
-  command: chdir= "{{ ci_path }}" {{ item }}
+  command: chdir: "{{ ci_path }}" {{ item }}
   with_items:
     - mvn package
   tags:
