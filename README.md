@@ -11,14 +11,20 @@ Pre-requisites are configured in the role itself no need of any extra roles.
 Role Variables
 --------------
 
-# In ci_path variable define path where git reportory to be placed and perform ci build and testing.
+In ci_path variable define path where git reportory to be placed and perform ci build and testing.
+```
 ci_path: test
+```
 
-# In ci_repo variable define github repository link.
+In ci_repo variable define github repository link.
+```
 ci_repo: https://github.com/hemanth22/GroovyLearning.git
+```
+In ci_branch variable define git branch where you want to perform the ci build and test.
 
-# In ci_branch variable define git branch where you want to perform the ci build and test.
+```
 ci_branch: superpom
+```
 
 Dependencies
 ------------
