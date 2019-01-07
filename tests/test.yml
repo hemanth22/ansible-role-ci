@@ -4,3 +4,4 @@
   roles:
     - role: ansible_role_ci
       become: true
+      become_method: sudo
