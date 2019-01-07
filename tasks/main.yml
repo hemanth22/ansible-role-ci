@@ -37,6 +37,7 @@
   command: "chdir={{ ci_path }} {{ item }}"
   with_items:
     - mvn compile
+  changed_when: false
   tags:
     - ci
 
@@ -44,6 +45,7 @@
   command: "chdir={{ ci_path }} {{ item }}"
   with_items:
     - mvn test
+  changed_when: false
   tags:
     - ci
 
@@ -51,6 +53,7 @@
   command: "chdir={{ ci_path }} {{ item }}"
   with_items:
     - mvn package
+  changed_when: false
   tags:
     - ci
 
