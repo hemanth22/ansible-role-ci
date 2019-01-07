@@ -27,7 +27,7 @@
   git:
     repo: "{{ ci_repo }}"
     dest: "{{ ci_path }}"
-    clone: yes
+    clone: true
     version: "{{ ci_branch }}"
   tags:
     - clone
@@ -36,21 +36,21 @@
 - name: Compile program with maven
   command: chdir= "{{ ci_path }}" {{ item }}
   with_items:
-  - mvn compile
+    - mvn compile
   tags:
     - ci
 
 - name: Testing program with maven
   command: chdir= "{{ ci_path }}" {{ item }}
   with_items:
-  - mvn test
+    - mvn test
   tags:
     - ci
 
 - name: Packing program with maven
   command: chdir= "{{ ci_path }}" {{ item }}
   with_items:
-  - mvn package
+    - mvn package
   tags:
     - ci
 
