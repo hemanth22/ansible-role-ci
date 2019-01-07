@@ -1,7 +1,8 @@
-Role Name
+Ansible Role: CI
 =========
 
-Ansible Role: CI
+It is maven based simple ci, which will perform maven compile, maven test, maven package.
+
 
 Requirements
 ------------
