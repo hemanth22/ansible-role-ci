@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  remote_user: root
+  remote_user: vagrant
   roles:
-    - hemanth22.ci
-  tags: ['ci']
+    - role: ansible_role_ci
+      become: true
