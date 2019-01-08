@@ -38,6 +38,9 @@
   args:
     chdir: "{{ ci_path }}"
     creates: "{{ ci_path }}"
+  when: ansible_distribution == 'CentOS' or
+        ansible_distribution == 'Red Hat Enterprise Linux' or
+        ansible_distribution == 'RedHat'
   tags:
     - ci
 
@@ -46,6 +49,9 @@
   args:
     chdir: "{{ ci_path }}"
     creates: "{{ ci_path }}"
+  when: ansible_distribution == 'CentOS' or
+        ansible_distribution == 'Red Hat Enterprise Linux' or
+        ansible_distribution == 'RedHat'
   tags:
     - ci
 
@@ -54,6 +60,9 @@
   args:
     chdir: "{{ ci_path }}"
     creates: "{{ ci_path }}"
+  when: ansible_distribution == 'CentOS' or
+        ansible_distribution == 'Red Hat Enterprise Linux' or
+        ansible_distribution == 'RedHat'
   tags:
     - ci
 
