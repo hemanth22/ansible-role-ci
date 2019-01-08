@@ -16,7 +16,7 @@
 
 - name: Creating a test directory
   file:
-    path: "{{ ci_path }}"
+    path: {{ ci_path }}
     state: directory
     mode: 0777
   tags:
@@ -25,10 +25,10 @@
 
 - name: Cloning a repository
   git:
-    repo: "{{ ci_repo }}"
-    dest: "{{ ci_path }}"
+    repo: {{ ci_repo }}
+    dest: {{ ci_path }}
     clone: true
-    version: "{{ ci_branch }}"
+    version: {{ ci_branch }}
   tags:
     - clone
     - ci
@@ -36,8 +36,8 @@
 - name: Compile program with maven
   command: mvn compile
   args:
-    chdir: "{{ ci_path }}"
-    creates: "{{ ci_path }}"
+    chdir: {{ ci_path }}
+    creates: {{ ci_path }}
   when: ansible_distribution == 'CentOS' or
         ansible_distribution == 'Red Hat Enterprise Linux' or
         ansible_distribution == 'RedHat'
@@ -47,8 +47,8 @@
 - name: Testing program with maven
   command: mvn test
   args:
-    chdir: "{{ ci_path }}"
-    creates: "{{ ci_path }}"
+    chdir: {{ ci_path }}
+    creates: {{ ci_path }}
   when: ansible_distribution == 'CentOS' or
         ansible_distribution == 'Red Hat Enterprise Linux' or
         ansible_distribution == 'RedHat'
@@ -58,8 +58,8 @@
 - name: Packing program with maven
   command: mvn package
   args:
-    chdir: "{{ ci_path }}"
-    creates: "{{ ci_path }}"
+    chdir: {{ ci_path }}
+    creates: {{ ci_path }}
   when: ansible_distribution == 'CentOS' or
         ansible_distribution == 'Red Hat Enterprise Linux' or
         ansible_distribution == 'RedHat'
@@ -68,7 +68,7 @@
 
 - name: Destroying test directory
   file:
-    path: "{{ ci_path }}"
+    path: {{ ci_path }}
     state: absent
   tags:
     - destroy
