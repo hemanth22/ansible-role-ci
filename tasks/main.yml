@@ -19,6 +19,7 @@
     path: '{{ ci_path }}'
     state: directory
     mode: 0777
+  register: foldercreate
   tags:
     - create-file
     - ci
@@ -29,6 +30,8 @@
     dest: '{{ ci_path }}'
     clone: true
     version: '{{ ci_branch }}'
+  register: cloning
+  when: foldercreate.changed
   tags:
     - clone
     - ci
@@ -38,9 +41,7 @@
   args:
     chdir: '{{ ci_path }}'
     creates: '{{ ci_path }}'
-  when: ansible_distribution == 'CentOS' or
-        ansible_distribution == 'Red Hat Enterprise Linux' or
-        ansible_distribution == 'RedHat'
+  when: cloning.changed
   tags:
     - ci
 
@@ -49,9 +50,7 @@
   args:
     chdir: '{{ ci_path }}'
     creates: '{{ ci_path }}'
-  when: ansible_distribution == 'CentOS' or
-        ansible_distribution == 'Red Hat Enterprise Linux' or
-        ansible_distribution == 'RedHat'
+  when: cloning.changed
   tags:
     - ci
 
@@ -60,9 +59,7 @@
   args:
     chdir: '{{ ci_path }}'
     creates: '{{ ci_path }}'
-  when: ansible_distribution == 'CentOS' or
-        ansible_distribution == 'Red Hat Enterprise Linux' or
-        ansible_distribution == 'RedHat'
+  when: cloning.changed
   tags:
     - ci
 
@@ -70,5 +67,6 @@
   file:
     path: '{{ ci_path }}'
     state: absent
+  when: cloning.changed
   tags:
     - destroy
