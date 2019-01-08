@@ -34,7 +34,7 @@
     - ci
 
 - name: Compile program with maven
-  command: mvn compile arg1
+  command: mvn compile
   args:
     chdir: "{{ ci_path }}"
     executable: /bin/bash
@@ -42,7 +42,7 @@
     - ci
 
 - name: Testing program with maven
-  command: mvn test arg1
+  command: mvn test
   args:
     chdir: "{{ ci_path }}"
     executable: /bin/bash
@@ -50,7 +50,7 @@
     - ci
 
 - name: Packing program with maven
-  command: mvn package arg1
+  command: mvn package
   args:
     chdir: "{{ ci_path }}"
     executable: /bin/bash
