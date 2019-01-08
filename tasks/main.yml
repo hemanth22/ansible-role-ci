@@ -11,9 +11,7 @@
         ansible_distribution == 'Red Hat Enterprise Linux' or
         ansible_distribution == 'RedHat'
   tags:
-    - install
     - ci
-    - skip_ansible_lint
 
 - name: Creating a test directory
   file:
@@ -22,9 +20,7 @@
     mode: 0777
   register: foldercreate
   tags:
-    - create-file
     - ci
-    - skip_ansible_lint
 
 - name: Cloning a repository
   git:
@@ -35,9 +31,7 @@
   register: cloning
   when: foldercreate.changed
   tags:
-    - clone
     - ci
-    - skip_ansible_lint
 
 - name: Compile program with maven
   command: mvn compile
@@ -47,7 +41,6 @@
   when: cloning.changed
   tags:
     - ci
-    - skip_ansible_lint
 
 - name: Testing program with maven
   command: mvn test
@@ -57,7 +50,6 @@
   when: cloning.changed
   tags:
     - ci
-    - skip_ansible_lint
 
 - name: Packing program with maven
   command: mvn package
@@ -67,7 +59,6 @@
   when: cloning.changed
   tags:
     - ci
-    - skip_ansible_lint
 
 - name: Destroying test directory
   file:
