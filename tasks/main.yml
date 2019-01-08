@@ -37,7 +37,7 @@
   command: mvn compile
   args:
     chdir: "{{ ci_path }}"
-    executable: /bin/bash
+    creates: "{{ ci_path }}"
   tags:
     - ci
 
@@ -45,7 +45,7 @@
   command: mvn test
   args:
     chdir: "{{ ci_path }}"
-    executable: /bin/bash
+    creates: "{{ ci_path }}"
   tags:
     - ci
 
@@ -53,7 +53,7 @@
   command: mvn package
   args:
     chdir: "{{ ci_path }}"
-    executable: /bin/bash
+    creates: "{{ ci_path }}"
   tags:
     - ci
 
