@@ -13,6 +13,7 @@
   tags:
     - install
     - ci
+    - skip_ansible_lint
 
 - name: Creating a test directory
   file:
@@ -23,6 +24,7 @@
   tags:
     - create-file
     - ci
+    - skip_ansible_lint
 
 - name: Cloning a repository
   git:
@@ -35,6 +37,7 @@
   tags:
     - clone
     - ci
+    - skip_ansible_lint
 
 - name: Compile program with maven
   command: mvn compile
@@ -44,6 +47,7 @@
   when: cloning.changed
   tags:
     - ci
+    - skip_ansible_lint
 
 - name: Testing program with maven
   command: mvn test
@@ -53,6 +57,7 @@
   when: cloning.changed
   tags:
     - ci
+    - skip_ansible_lint
 
 - name: Packing program with maven
   command: mvn package
@@ -62,11 +67,11 @@
   when: cloning.changed
   tags:
     - ci
+    - skip_ansible_lint
 
 - name: Destroying test directory
   file:
     path: '{{ ci_path }}'
     state: absent
-  when: cloning.changed
   tags:
     - destroy
