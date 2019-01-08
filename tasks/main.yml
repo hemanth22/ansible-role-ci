@@ -21,6 +21,8 @@
   register: foldercreate
   tags:
     - ci
+  skip_list:
+  - '503'
 
 - name: Cloning a repository
   git:
@@ -32,6 +34,8 @@
   when: foldercreate.changed
   tags:
     - ci
+  skip_list:
+  - '503'
 
 - name: Compile program with maven
   command: mvn compile
@@ -41,6 +45,8 @@
   when: cloning.changed
   tags:
     - ci
+  skip_list:
+  - '503'
 
 - name: Testing program with maven
   command: mvn test
@@ -50,6 +56,8 @@
   when: cloning.changed
   tags:
     - ci
+  skip_list:
+  - '503'
 
 - name: Packing program with maven
   command: mvn package
@@ -59,6 +67,8 @@
   when: cloning.changed
   tags:
     - ci
+  skip_list:
+  - '503'
 
 - name: Destroying test directory
   file:
