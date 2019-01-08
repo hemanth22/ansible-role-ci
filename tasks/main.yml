@@ -56,7 +56,7 @@
 
 - name: Destroying test directory
   file:
-    path: "{{ ci_path }}/"
+    path: "{{ ci_path }}"
     state: absent
   tags:
     - destroy
