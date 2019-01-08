@@ -58,8 +58,8 @@
 - name: Packing program with maven
   command: mvn package
   args:
-    chdir: {{ ci_path }}
-    creates: {{ ci_path }}
+    chdir: '{{ ci_path }}'
+    creates: '{{ ci_path }}'
   when: ansible_distribution == 'CentOS' or
         ansible_distribution == 'Red Hat Enterprise Linux' or
         ansible_distribution == 'RedHat'
