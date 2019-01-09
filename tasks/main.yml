@@ -19,10 +19,10 @@
     state: directory
     mode: 0777
   register: foldercreate
-  tags:
-    - ci
   skip_list:
     - '503'
+  tags:
+    - ci
 
 - name: Cloning a repository
   git:
@@ -32,10 +32,10 @@
     version: '{{ ci_branch }}'
   register: cloning
   when: foldercreate.changed
-  tags:
-    - ci
   skip_list:
     - '503'
+  tags:
+    - ci
 
 - name: Compile program with maven
   command: mvn compile
@@ -43,10 +43,10 @@
     chdir: '{{ ci_path }}'
     creates: compile
   when: cloning.changed
-  tags:
-    - ci
   skip_list:
     - '503'
+  tags:
+    - ci
 
 - name: Testing program with maven
   command: mvn test
@@ -54,10 +54,10 @@
     chdir: '{{ ci_path }}'
     creates: test
   when: cloning.changed
-  tags:
-    - ci
   skip_list:
     - '503'
+  tags:
+    - ci
 
 - name: Packing program with maven
   command: mvn package
@@ -65,10 +65,10 @@
     chdir: '{{ ci_path }}'
     creates: package
   when: cloning.changed
-  tags:
-    - ci
   skip_list:
     - '503'
+  tags:
+    - ci
 
 - name: Destroying test directory
   file:
