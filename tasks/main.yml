@@ -19,8 +19,6 @@
     state: directory
     mode: 0777
   register: foldercreate
-  skip_list:
-    - '503'
   tags:
     - ci
 
@@ -32,8 +30,6 @@
     version: '{{ ci_branch }}'
   register: cloning
   when: foldercreate.changed
-  skip_list:
-    - '503'
   tags:
     - ci
 
@@ -43,8 +39,6 @@
     chdir: '{{ ci_path }}'
     creates: compile
   when: cloning.changed
-  skip_list:
-    - '503'
   tags:
     - ci
 
@@ -54,8 +48,6 @@
     chdir: '{{ ci_path }}'
     creates: test
   when: cloning.changed
-  skip_list:
-    - '503'
   tags:
     - ci
 
@@ -65,8 +57,6 @@
     chdir: '{{ ci_path }}'
     creates: package
   when: cloning.changed
-  skip_list:
-    - '503'
   tags:
     - ci
 
