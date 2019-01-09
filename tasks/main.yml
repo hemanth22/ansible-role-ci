@@ -32,7 +32,7 @@
   when: foldercreate.changed
   tags:
     - ci
-    - ['skip_ansible_lint']
+    - skip_ansible_lint
 
 - name: Compile program with maven
   command: mvn compile
@@ -42,7 +42,7 @@
   when: cloning.changed
   tags:
     - ci
-    - ['skip_ansible_lint']
+    - skip_ansible_lint
 
 - name: Testing program with maven
   command: mvn test
@@ -52,7 +52,7 @@
   when: cloning.changed
   tags:
     - ci
-    - ['skip_ansible_lint']
+    - skip_ansible_lint
 
 - name: Packing program with maven
   command: mvn package
@@ -62,7 +62,7 @@
   when: cloning.changed
   tags:
     - ci
-    - ['skip_ansible_lint']
+    - skip_ansible_lint
 
 - name: Destroying test directory
   file:
