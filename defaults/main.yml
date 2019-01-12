@@ -6,3 +6,13 @@ ci_path: test
 ci_repo: https://github.com/hemanth22/GroovyLearning.git
 # Git branch
 ci_branch: superpom
+
+# Maven compile
+maven_create_command: >-
+  mvn compile
+# Maven test
+maven_test_command: >-
+  mvn test
+# Maven Artifact
+maven_artifacts_command: >-
+  mvn package
