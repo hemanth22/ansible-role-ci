@@ -38,7 +38,7 @@
   command: mvn compile
   args:
     chdir: '{{ ci_path }}'
-    creates: compile
+    creates: '{{ ci_path }}'
   when: cloning.changed
   tags:
     - ci
@@ -48,7 +48,7 @@
   command: mvn test
   args:
     chdir: '{{ ci_path }}'
-    creates: test
+    creates: '{{ ci_path }}'
   when: cloning.changed
   tags:
     - ci
@@ -58,7 +58,7 @@
   command: mvn package
   args:
     chdir: '{{ ci_path }}'
-    creates: package
+    creates: '{{ ci_path }}'
   when: cloning.changed
   tags:
     - ci
