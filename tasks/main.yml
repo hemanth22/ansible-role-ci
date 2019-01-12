@@ -7,7 +7,7 @@
     packages:
       - git
       - maven
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '7'
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
   tags:
     - ci
 
