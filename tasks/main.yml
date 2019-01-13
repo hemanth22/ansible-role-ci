@@ -36,7 +36,7 @@
   command: "{{ maven_create_command }}"
   args:
     chdir: "{{ ci_path }}"
-    creates: "{{ maven_create_command }}"
+    creates: "{{ ci_path }}"
     warn: false
   when: cloning.changed
   tags:
@@ -47,7 +47,7 @@
   command: "{{ maven_test_command }}"
   args:
     chdir: "{{ ci_path }}"
-    creates: "{{ maven_test_command }}"
+    creates: "{{ ci_path }}"
     warn: false
   when: cloning.changed
   tags:
@@ -58,7 +58,7 @@
   command: "{{ maven_artifacts_command }}"
   args:
     chdir: "{{ ci_path }}"
-    creates: "{{ maven_artifacts_command }}"
+    creates: "{{ ci_path }}"
     warn: false
   when: cloning.changed
   tags:
