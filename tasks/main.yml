@@ -16,7 +16,6 @@
     path: "{{ ci_path }}"
     state: directory
     mode: 0777
-    recurse: true
   register: foldercreate
   tags:
     - ci
@@ -70,6 +69,5 @@
   file:
     path: "{{ ci_path }}"
     state: absent
-    recurse: true
   tags:
     - destroy
