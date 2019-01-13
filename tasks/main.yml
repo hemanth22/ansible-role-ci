@@ -35,7 +35,7 @@
     - Compile program with maven
     - Testing program with maven
     - Packing program with maven
-    
+
 - name: Destroying test directory
   file:
     path: "{{ ci_path }}"
