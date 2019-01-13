@@ -11,11 +11,13 @@ env:
 
 install:
   - pip install molecule docker
+  - apt-get install tree -y
 
 before_script:
   - cd ../
   - mv ansible-role-$ROLE_NAME hemanth22.$ROLE_NAME
   - cd hemanth22.$ROLE_NAME
+  - tree
 
 script:
   - molecule test
