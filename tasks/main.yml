@@ -31,40 +31,11 @@
   tags:
     - ci
     - skip_ansible_lint
-
-- name: Compile program with maven
-  command: "{{ maven_create_command }}"
-  args:
-    chdir: "{{ ci_path }}"
-    creates: "{{ ci_path }}"
-    warn: false
-  when: cloning.changed
-  tags:
-    - ci
-    - skip_ansible_lint
-
-- name: Testing program with maven
-  command: "{{ maven_test_command }}"
-  args:
-    chdir: "{{ ci_path }}"
-    creates: "{{ ci_path }}"
-    warn: false
-  when: cloning.changed
-  tags:
-    - ci
-    - skip_ansible_lint
-
-- name: Packing program with maven
-  command: "{{ maven_artifacts_command }}"
-  args:
-    chdir: "{{ ci_path }}"
-    creates: "{{ ci_path }}"
-    warn: false
-  when: cloning.changed
-  tags:
-    - ci
-    - skip_ansible_lint
-
+  notify:
+    - Compile program with maven
+    - Testing program with maven
+    - Packing program with maven
+    
 - name: Destroying test directory
   file:
     path: "{{ ci_path }}"
