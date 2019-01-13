@@ -1,7 +1,11 @@
 ---
 - hosts: localhost
   remote_user: vagrant
-  roles:
-    - role: ansible_role_ci
+  vars:
+    ci_repo: https://github.com/hemanth22/GroovyLearning.git
+    ci_path: hemanthtest
+    ci_branch: codecoverage 
+  roles: 
+    - role: hemanth22.ansible_role_ci
       become: true
       become_method: sudo

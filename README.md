@@ -38,10 +38,26 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```
-    - hosts: localhost
-      roles:
-        - role: hemanth22.ansible_role_ci
-          tags: ['ci']
+---
+- hosts: localhost
+  remote_user: vagrant
+  vars:
+    ci_repo: https://github.com/hemanth22/GroovyLearning.git
+    ci_path: hemanthtest
+    ci_branch: codecoverage
+  roles:
+    - role: hemanth22.ansible_role_ci
+      become: true
+      become_method: sudo
+```
+
+To create a directory and work as CI use below command.
+```
+ansible-playbook test.yml --tags ci
+```
+To destroy test directory created during CI.
+```
+ansible-playbook test.yml --tags destroy
 ```
 License
 -------
