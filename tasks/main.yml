@@ -69,7 +69,6 @@
   file:
     path: "{{ ci_path }}"
     state: absent
-    recurse: true
     force: true
   tags:
     - destroy
