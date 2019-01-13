@@ -1,0 +1,33 @@
+----
+- name: Compile
+  command: "{{ maven_create_command }}"
+  args:
+    chdir: "{{ ci_path }}"
+    creates: "{{ ci_path }}"
+    warn: false
+  when: cloning.changed
+  tags:
+    - ci
+    - skip_ansible_lint
+
+- name: Test
+  command: "{{ maven_test_command }}"
+  args:
+    chdir: "{{ ci_path }}"
+    creates: "{{ ci_path }}"
+    warn: false
+  when: cloning.changed
+  tags:
+    - ci
+    - skip_ansible_lint
+
+- name: Pack
+  command: "{{ maven_artifacts_command }}"
+  args:
+    chdir: "{{ ci_path }}"
+    creates: "{{ ci_path }}"
+    warn: false
+  when: cloning.changed
+  tags:
+    - ci
+    - skip_ansible_lint

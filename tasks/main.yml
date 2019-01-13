@@ -32,9 +32,9 @@
     - ci
     - skip_ansible_lint
   notify:
-    - Compile program with maven
-    - Testing program with maven
-    - Packing program with maven
+    - Compile
+    - Test
+    - Pack
 
 - name: Destroying test directory
   file:
