@@ -8,7 +8,8 @@
       - git
       - maven
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
-  tags: ['ci']
+  tags:
+    - ci
 
 - name: Creating a test directory
   file:
@@ -16,7 +17,8 @@
     state: directory
     mode: 0777
   register: foldercreate
-  tags: ['ci']
+  tags:
+    - ci
 
 - name: Cloning a repository
   git:
@@ -26,7 +28,9 @@
     version: "{{ ci_branch }}"
   register: cloning
   when: foldercreate.changed
-  tags: ['ci','skip_ansible_lint']
+  tags:
+    - ci
+    - skip_ansible_lint
 
 - name: Compile with maven
   command: "{{ maven_create_command }}"
@@ -35,7 +39,9 @@
     creates: "{{ ci_path }}"
     warn: false
   when: cloning.changed
-  tags: ['ci','skip_ansible_lint']
+  tags:
+    - ci
+    - skip_ansible_lint
 
 - name: Testing with maven
   command: "{{ maven_test_command }}"
@@ -44,7 +50,9 @@
     creates: "{{ ci_path }}"
     warn: false
   when: cloning.changed
-  tags: ['ci','skip_ansible_lint']
+  tags:
+    - ci
+    - skip_ansible_lint
 
 - name: Packing with maven
   command: "{{ maven_artifacts_command }}"
@@ -53,11 +61,14 @@
     creates: "{{ ci_path }}"
     warn: false
   when: cloning.changed
-  tags: ['ci','skip_ansible_lint']
+  tags:
+    - ci
+    - skip_ansible_lint
 
 - name: Destroying test directory
   file:
     path: "{{ ci_path }}"
     state: absent
     force: true
-  tags: ['destroy']
+  tags:
+    - destroy
