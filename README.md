@@ -1,8 +1,8 @@
 Ansible Role: CI
 =========
+[![Build Status](https://travis-ci.org/hemanth22/ansible-role-ci.svg?branch=master)](https://travis-ci.org/hemanth22/ansible-role-ci)
 
 It is maven based simple ci, which will perform maven compile, maven test, maven package.
-
 
 Requirements
 ------------
