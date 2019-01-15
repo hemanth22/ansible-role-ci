@@ -46,7 +46,7 @@ Including an example of how to use your role (for instance, with variables passe
     ci_path: hemanthtest
     ci_branch: codecoverage
   roles:
-    - role: hemanth22.ansible_role_ci
+    - role: hemanth22.ci
       become: true
       become_method: sudo
 ```
