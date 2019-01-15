@@ -1,6 +1,7 @@
 ---
 galaxy_info:
-  author: Hemanth BITRA
+  role_name: ci
+  author: hemanth22
   description: Maven based ansible ci
   issue_tracker_url: https://github.com/hemanth22/ansible-role-ci/issues
   license: GPLv3
