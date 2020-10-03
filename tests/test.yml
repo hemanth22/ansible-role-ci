@@ -1,11 +1,11 @@
 ---
 - hosts: localhost
-  remote_user: vagrant
+  remote_user: root
   vars:
     ci_repo: https://github.com/hemanth22/GroovyLearning.git
     ci_path: hemanthtest
-    ci_branch: codecoverage 
-  roles: 
+    ci_branch: codecoverage
+  roles:
     - role: hemanth22.ci
       become: true
       become_method: sudo

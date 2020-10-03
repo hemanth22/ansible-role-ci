@@ -10,6 +10,7 @@
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
   tags:
     - ci
+    - molecule-idempotence-notest
 
 - name: Creating a test directory
   file:
@@ -19,6 +20,7 @@
   register: foldercreate
   tags:
     - ci
+    - molecule-idempotence-notest
 
 - name: Cloning a repository
   git:
@@ -31,6 +33,7 @@
   tags:
     - ci
     - skip_ansible_lint
+    - molecule-idempotence-notest
 
 - name: Compile with maven
   command: "{{ maven_create_command }}"
@@ -42,6 +45,7 @@
   tags:
     - ci
     - skip_ansible_lint
+    - molecule-idempotence-notest
 
 - name: Testing with maven
   command: "{{ maven_test_command }}"
@@ -53,6 +57,7 @@
   tags:
     - ci
     - skip_ansible_lint
+    - molecule-idempotence-notest
 
 - name: Packing with maven
   command: "{{ maven_artifacts_command }}"
@@ -64,6 +69,7 @@
   tags:
     - ci
     - skip_ansible_lint
+    - molecule-idempotence-notest
 
 - name: Destroying test directory
   file:
@@ -72,3 +78,4 @@
     force: true
   tags:
     - destroy
+    - molecule-idempotence-notest
