@@ -10,5 +10,4 @@
       changed_when: false
 
   roles:
-    - role: hemanth22.ci
     - { role: hemanth22.ci, tags: 'molecule-notest' }
