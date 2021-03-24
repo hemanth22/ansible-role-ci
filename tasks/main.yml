@@ -7,7 +7,6 @@
     packages:
       - git
       - maven
-  when: ansible_distribution == 'CentOS'
   tags:
     - ci
     - molecule-idempotence-notest
