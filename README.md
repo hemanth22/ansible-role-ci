@@ -1,6 +1,6 @@
 Ansible Role: CI
 =========
-[![CI](https://github.com/hemanth22/ansible-role-ci/actions/workflows/CI.yml/badge.svg)](https://github.com/hemanth22/ansible-role-ci/actions/workflows/CI.yml)
+[![CI](https://github.com/hemanth22/ansible-role-ci/actions/workflows/CI.yml/badge.svg)](https://github.com/hemanth22/ansible-role-ci/actions/workflows/CI.yml) [![Release](https://github.com/hemanth22/ansible-role-ci/actions/workflows/release.yml/badge.svg)](https://github.com/hemanth22/ansible-role-ci/actions/workflows/release.yml)
 
 It is maven based simple ci, which will perform maven compile, maven test, maven package.
 
